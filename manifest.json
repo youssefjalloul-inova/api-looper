@@ -1,0 +1,107 @@
+{
+  "manifest_version": "0.3",
+  "name": "api-looper",
+  "display_name": "API Looper",
+  "version": "1.0.0",
+  "description": "API Looper: use your own API key (Kimi, OpenAI, OpenRouter, DeepSeek, Gemini or Anthropic) from inside Claude Desktop.",
+  "long_description": "Claude plans and supervises; the model on your API key does the drafting, rewriting and bulk work. Tokens for delegated tasks are billed to your API key, not your Claude plan. Your key is stored in your system keychain by Claude Desktop and usage is tracked locally on this computer.",
+  "author": {
+    "name": "Youssef Jalloul"
+  },
+  "keywords": [
+    "api looper",
+    "api key",
+    "byok",
+    "kimi",
+    "moonshot",
+    "openai",
+    "openrouter",
+    "delegate"
+  ],
+  "license": "MIT",
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/server/index.js"
+      ],
+      "env": {
+        "LOOPER_PROVIDER": "${user_config.provider}",
+        "LOOPER_API_KEY": "${user_config.api_key}",
+        "LOOPER_DEFAULT_MODEL": "${user_config.default_model}",
+        "LOOPER_BASE_URL": "${user_config.base_url}",
+        "LOOPER_MONTHLY_TOKEN_BUDGET": "${user_config.monthly_token_budget}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "delegate_to_model",
+      "description": "Send a task to the model on your API key and get the answer back."
+    },
+    {
+      "name": "list_models",
+      "description": "List the model IDs your API key can use."
+    },
+    {
+      "name": "token_usage",
+      "description": "Show tokens used through your key, by model."
+    },
+    {
+      "name": "check_balance",
+      "description": "Show the balance or spend on your provider account."
+    }
+  ],
+  "user_config": {
+    "provider": {
+      "type": "string",
+      "title": "Provider",
+      "description": "One of: moonshot (Kimi), openai, openrouter, deepseek, gemini, anthropic, custom",
+      "default": "moonshot",
+      "required": true
+    },
+    "api_key": {
+      "type": "string",
+      "title": "API key",
+      "description": "Your API key for the provider above. Stored in your system keychain.",
+      "sensitive": true,
+      "required": true
+    },
+    "default_model": {
+      "type": "string",
+      "title": "Default model",
+      "description": "Model ID to use when Claude doesn't pick one (e.g. a Kimi K2 model). Leave blank and ask Claude to list models.",
+      "required": false
+    },
+    "base_url": {
+      "type": "string",
+      "title": "Base URL (optional)",
+      "description": "Only for 'custom', or to override the preset (e.g. https://api.moonshot.cn/v1 for Moonshot China).",
+      "required": false
+    },
+    "monthly_token_budget": {
+      "type": "number",
+      "title": "Monthly token cap (optional)",
+      "description": "Stop delegating once this many tokens are used this month. 0 = no cap.",
+      "default": 0,
+      "min": 0,
+      "required": false
+    }
+  },
+  "compatibility": {
+    "platforms": [
+      "darwin",
+      "win32",
+      "linux"
+    ],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/youssefjalloul-inova/api-looper"
+  }
+}

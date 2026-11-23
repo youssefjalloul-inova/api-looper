@@ -1,0 +1,15 @@
+{
+  "name": "api-looper",
+  "version": "1.0.0",
+  "description": "Use your own API key (Kimi, OpenAI, OpenRouter, DeepSeek, Gemini, Anthropic) from inside Claude Desktop.",
+  "type": "module",
+  "main": "server/index.js",
+  "license": "MIT",
+  "scripts": {
+    "pack": "npx -y @anthropic-ai/mcpb pack . api-looper.mcpb"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^3.25.0"
+  }
+}

@@ -1,0 +1,4 @@
+*.mcpb
+.git/
+README.md
+.gitignore
