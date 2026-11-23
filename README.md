@@ -17,7 +17,7 @@ Works with **Kimi (Moonshot)**, **OpenAI**, **OpenRouter**, **DeepSeek**, **Goog
 
 ## Install
 
-1. Download `api-looper.mcpb` from [Releases](../../releases).
+1. Download [`api-looper.mcpb`](https://github.com/youssefjalloul-inova/api-looper/raw/main/dist/api-looper.mcpb).
 2. Double-click it. Claude Desktop opens the install screen.
 3. Fill in:
    - **Provider**: `moonshot` (Kimi), `openai`, `openrouter`, `deepseek`, `gemini`, `anthropic` or `custom`
