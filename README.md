@@ -1,3 +1,5 @@
+<img src="assets/banner.jpg" alt="API Looper: bring your own API key into Claude Desktop" width="100%">
+
 # API Looper
 
 **Bring your own API key into Claude Desktop.**
